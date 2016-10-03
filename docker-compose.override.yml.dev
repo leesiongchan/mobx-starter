@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  app:
+    environment:
+      # This is required when nginx-proxy is enabled.
+      - VIRTUAL_HOST=app.mobx.dev
+    volumes:
+      - ./src:/srv/mobx-starter/src:rw
+
+  storybook:
+    environment:
+      # This is required when nginx-proxy is enabled.
+      - VIRTUAL_HOST=storybook.mobx.dev
+    volumes:
+      - ./.storybook:/srv/mobx-storybook-starter/.storybook:rw
+      - ./src:/srv/mobx-storybook-starter/src:rw
+      - ./stories:/srv/mobx-storybook-starter/stories:rw
+
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro

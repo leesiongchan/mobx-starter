@@ -1,0 +1,10 @@
+*-manifest.json
+*.sublime-workspace
+.DS_Store
+.env
+docker-compose.override.yml
+node_modules/
+public/
+webpack-assets.json
+typings/*
+!typings/custom/
