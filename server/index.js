@@ -38,8 +38,12 @@ if (isProd) {
   app.use(webpackDevMiddleware(compiler, {
     hot: true,
     noInfo: true,
+    stats: {
+      children: false,
+      chunks: false,
+    },
     watchOptions: {
-      poll: 3000,
+      poll: 2000,
     },
   }));
   app.use(webpackHotMiddleware(compiler));

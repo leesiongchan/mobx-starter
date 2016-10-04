@@ -15,15 +15,15 @@ ReactDOM.render(
   appEl
 );
 
-// if (module.hot) {
-//   module.hot.accept("./routes", () => {
-//     const nextRoutes = (require("./routes") as any).default;
+if (module.hot) {
+  module.hot.accept("./routes", () => {
+    const nextRoutes = (require("./routes") as any).default;
 
-//     ReactDOM.render(
-//       <AppContainer>
-//         <Router history={browserHistory} routes={nextRoutes} />
-//       </AppContainer>,
-//       appEl
-//     );
-//   });
-// }
+    ReactDOM.render(
+      <AppContainer>
+        <Router history={browserHistory} routes={nextRoutes} />
+      </AppContainer>,
+      appEl
+    );
+  });
+}
