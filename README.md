@@ -1,4 +1,4 @@
-# Mobx + React + Hot Reload + PostCSS + Typescript + Webpack + Storybook + Docker project starter
+# Mobx + React + Hot Reload + PostCSS + Webpack + Storybook + Docker project starter
 
 Nothing fancy just a suite of packages that fit my personal taste.
 

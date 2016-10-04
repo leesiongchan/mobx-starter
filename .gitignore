@@ -6,5 +6,3 @@ docker-compose.override.yml
 node_modules/
 public/
 webpack-assets.json
-typings/*
-!typings/custom/

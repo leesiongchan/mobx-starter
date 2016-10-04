@@ -16,7 +16,7 @@ const isProd = process.env.NODE_ENV === 'production';
 let webpackConfig = {
   context: APP_DIR,
   entry: [
-    './index.tsx',
+    './index.jsx',
   ],
   externals: {
     config: 'env',
@@ -28,8 +28,8 @@ let webpackConfig = {
       test: /\.css$/,
     }, {
       include: APP_DIR,
-      loaders: ['awesome-typescript'],
-      test: /\.tsx?$/,
+      loaders: ['babel'],
+      test: /\.jsx?$/,
     }],
   },
   output: {
@@ -58,7 +58,7 @@ let webpackConfig = {
     alias: {
       app: APP_DIR,
     },
-    extensions: ['*', '.js', '.ts', '.tsx'],
+    extensions: ['*', '.js', '.jsx'],
   },
 };
 
@@ -108,8 +108,8 @@ if (isProd) {
         test: /\.css$/,
       }, {
         include: APP_DIR,
-        loaders: ['react-hot/webpack', 'awesome-typescript'],
-        test: /\.tsx?$/,
+        loaders: ['babel'],
+        test: /\.jsx?$/,
       }],
     },
     output: {

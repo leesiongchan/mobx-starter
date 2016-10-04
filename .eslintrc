@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "rules": {
+    "max-len": [1, 120, 2, { ignoreComments: true }]
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}

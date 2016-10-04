@@ -10,10 +10,10 @@ const APP_DIR = path.join(__dirname, '../src');
 
 module.exports = {
   module: {
-     loaders: [{
+    loaders: [{
       include: APP_DIR,
-      loaders: ['awesome-typescript'],
-      test: /\.tsx?$/,
+      loaders: ['babel'],
+      test: /\.jsx?$/,
     }, {
       include: APP_DIR,
       loaders: ['style', 'css?modules&importLoaders=1&localIdentName=[path]_[local]_[hash:base64:5]', 'postcss'],
@@ -37,7 +37,7 @@ module.exports = {
     alias: {
       app: APP_DIR,
     },
-    extensions: ['', '.js', '.ts', '.tsx'],
+    extensions: ['', '.js', '.jsx'],
   },
   watchOptions: { poll: 2000 },
 };
