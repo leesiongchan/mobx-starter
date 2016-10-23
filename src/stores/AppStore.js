@@ -1,17 +1,20 @@
-import { observable } from 'mobx';
+import { action, observable, runInAction } from 'mobx';
 
-export class AppState {
+class AppStore {
   @observable timer = 0;
 
   constructor() {
     setInterval(() => {
-      this.timer += 1;
+      runInAction(() => {
+        this.timer += 1;
+      });
     }, 1000);
   }
 
+  @action
   resetTimer() {
     this.timer = 0;
   }
 }
 
-export default AppState;
+export default AppStore;

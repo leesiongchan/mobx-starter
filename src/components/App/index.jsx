@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div className={styles.main}>
         <main className={styles.content}>
-          {React.cloneElement(children, { ...props })}
+          {React.cloneElement(children, props)}
         </main>
 
         {config.NODE_ENV === 'development' &&

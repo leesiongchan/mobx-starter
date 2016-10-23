@@ -1,8 +1,13 @@
 import _ from 'lodash';
+import unflatten from 'unflatten';
 
 function renderer(view, locals) {
   return function* () {
     const CLIENT_ENV_LIST = process.env.CLIENT_ENV_LIST || '';
+    const clientEnv = unflatten(_.pick(process.env, CLIENT_ENV_LIST.split(',')), {
+      objectMode: true,
+      separator: '__',
+    });
     let webpackAssets = {};
 
     try {
@@ -16,7 +21,7 @@ function renderer(view, locals) {
       ...locals,
       env: process.env.NODE_ENV,
       window: {
-        env: JSON.stringify(_.pick(process.env, CLIENT_ENV_LIST.split(','))),
+        env: JSON.stringify(clientEnv),
       },
     };
 
