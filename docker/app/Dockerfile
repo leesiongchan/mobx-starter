@@ -9,6 +9,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list
 WORKDIR /srv/tripviss-web-admin
 
 COPY package.json ./
+COPY yarn.lock ./
 RUN yarn install
 
 RUN echo 'set -o allexport\n. ~/.env\nset +o allexport' >> /root/.bashrc \
