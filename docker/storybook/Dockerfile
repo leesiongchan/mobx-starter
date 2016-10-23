@@ -8,17 +8,15 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list
 
 WORKDIR /srv/tripviss-web-admin
 
-COPY package.json ./
-COPY yarn.lock ./
-RUN yarn install
-
 RUN echo 'set -o allexport\n. ~/.env\nset +o allexport' >> /root/.bashrc \
     && echo '' > /root/.env
 
 COPY .babelrc ./
 COPY .storybook .storybook/
+COPY package.json ./
 COPY src src/
 COPY stories stories/
+COPY yarn.lock ./
 
 COPY docker/storybook/start.sh /
 COPY docker/storybook/update-env-vars.sh /
