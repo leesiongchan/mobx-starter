@@ -2,17 +2,26 @@ import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
 import AboutPage from 'app/pages/AboutPage';
-import App from 'app/App';
+import App from 'app/components/App';
+import AppStore from 'app/stores/AppStore';
 import HomePage from 'app/pages/HomePage';
 import NotFoundPage from 'app/pages/NotFoundPage';
 
+const appStore = new AppStore();
+
+const Wrapper = ({ children }) => React.cloneElement(children, {
+  appStore,
+});
+
 const routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={HomePage} />
+  <Route component={Wrapper}>
+    <Route component={App} path="/">
+      <IndexRoute component={HomePage} />
 
-    <Route path="about" component={AboutPage} />
+      <Route component={AboutPage} path="about" />
 
-    <Route path="*" component={NotFoundPage} />
+      <Route component={NotFoundPage} path="*" />
+    </Route>
   </Route>
 );
 

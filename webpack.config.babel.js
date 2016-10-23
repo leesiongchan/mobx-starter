@@ -4,6 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import lost from 'lost';
 import path from 'path';
 import postcssHexrgba from 'postcss-hexrgba';
+import postcssImport from 'postcss-import';
 import postcssNested from 'postcss-nested';
 import postcssSimpleVars from 'postcss-simple-vars';
 import webpack from 'webpack';
@@ -16,6 +17,7 @@ const isProd = process.env.NODE_ENV === 'production';
 let webpackConfig = {
   context: APP_DIR,
   entry: [
+    './assets/css/main.css',
     './index.jsx',
   ],
   externals: {
@@ -25,11 +27,18 @@ let webpackConfig = {
     loaders: [{
       include: APP_DIR,
       loader: ExtractTextPlugin.extract({ loader: 'css?modules&importLoaders=1!postcss', fallbackLoader: 'style' }),
-      test: /\.css$/,
+      test: /^((?!(main)).)*\.css$/,
     }, {
       include: APP_DIR,
-      loaders: ['babel'],
+      loader: ExtractTextPlugin.extract({ loader: 'css!postcss', fallbackLoader: 'style' }),
+      test: /main\.css$/,
+    }, {
+      include: APP_DIR,
+      loader: 'babel',
       test: /\.jsx?$/,
+    }, {
+      loader: 'json',
+      test: /\.json$/,
     }],
   },
   output: {
@@ -41,24 +50,26 @@ let webpackConfig = {
     new AssetsPlugin({
       update: true,
     }),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [
-          postcssNested(),
-          postcssSimpleVars(),
-          postcssHexrgba(),
-          lost(),
-          autoprefixer(),
-        ],
-      },
-    }),
     new webpack.ProgressPlugin(),
+  ],
+  postcss: [
+    // @note Ordering matters.
+    postcssImport({
+      path: ['assets/css'],
+      root: APP_DIR,
+    }),
+    postcssNested(),
+    postcssSimpleVars(),
+    postcssHexrgba(),
+    lost(),
+    autoprefixer(),
   ],
   resolve: {
     alias: {
       app: APP_DIR,
     },
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx'],
+    modules: ['node_modules'],
   },
 };
 
@@ -94,6 +105,8 @@ if (isProd) {
     ],
   };
 } else {
+  const [,, ...loaders] = webpackConfig.module.loaders; // Omit the first two element (CSS loaders).
+
   webpackConfig = {
     ...webpackConfig,
     entry: [
@@ -102,15 +115,19 @@ if (isProd) {
       ...webpackConfig.entry,
     ],
     module: {
-      loaders: [{
-        include: APP_DIR,
-        loaders: ['style', 'css?modules&importLoaders=1&localIdentName=[path]_[local]_[hash:base64:5]', 'postcss'],
-        test: /\.css$/,
-      }, {
-        include: APP_DIR,
-        loaders: ['babel'],
-        test: /\.jsx?$/,
-      }],
+      loaders: [
+        ...loaders,
+        {
+          include: APP_DIR,
+          loader: 'style!css?modules&importLoaders=1&localIdentName=[path]_[local]_[hash:base64:5]!postcss',
+          test: /^((?!(main)).)*\.css$/,
+        },
+        {
+          include: APP_DIR,
+          loader: 'style!css!postcss',
+          test: /main\.css$/,
+        },
+      ],
     },
     output: {
       ...webpackConfig.output,

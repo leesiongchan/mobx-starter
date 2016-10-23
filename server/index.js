@@ -43,7 +43,7 @@ if (isProd) {
       chunks: false,
     },
     watchOptions: {
-      poll: 2000,
+      poll: 1000,
     },
   }));
   app.use(webpackHotMiddleware(compiler));

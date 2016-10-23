@@ -1,0 +1,48 @@
+/* Breakpoints */
+$small    : 480px;
+$medium   : 768px;
+$large    : 960px;
+$xlarge   : 1280px;
+
+/* Colors */
+$black            : #000000;
+$white            : #ffffff;
+
+/* Red */
+$coral-red        : #ff4546;
+
+/* Yellow */
+$selective-yellow : #f9ae3b;
+
+/* Green */
+$jungle-green     : #2bb673;
+$mountain-meadow  : #22b573;
+
+/* Blue */
+$lochmara         : #0088cc;
+
+/* Gray */
+$alto             : #dcdcdc;
+$scorpion         : #595959;
+$shark            : #262b33;
+$thunder          : #231f20;
+$wild-sand        : #f4f4f4;
+
+/* Fonts */
+$poppins          : "Poppins";
+
+$base-font        : $poppins, Circular, Helvetica, Arial, sans-serif;
+$base-font-size   : 14px;
+$base-font-weight : 400;
+$base-line-height : 1.43;
+
+/* Grid settings */
+$container-width : 1080px;
+
+/* Lost grid settings */
+@lost gutter 25px;
+@lost flexbox flex;
+@lost cycle auto;
+
+/* Borders */
+$border : 1px solid $alto;

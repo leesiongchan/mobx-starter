@@ -1,3 +1,5 @@
+import 'app/assets/css/main.css';
+
 import { configure } from '@kadira/storybook';
 
 function loadStories() {

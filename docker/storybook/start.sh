@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
-npm install
+. /update-env-vars.sh
 
-exec npm run storybook
+yarn install
+
+exec yarn run storybook

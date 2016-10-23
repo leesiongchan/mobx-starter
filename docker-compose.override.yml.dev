@@ -6,16 +6,25 @@ services:
       # This is required when nginx-proxy is enabled.
       - VIRTUAL_HOST=app.mobx.dev
     volumes:
+      - ./.yarn.lock:/srv/mobx-starter/.yarn.lock:rw
+      - ./node_modules:/srv/mobx-starter/node_modules:rw
       - ./src:/srv/mobx-starter/src:rw
 
   storybook:
+    build:
+      context: .
+      dockerfile: ./docker/storybook/Dockerfile
+    env_file: ./docker/app/.env
     environment:
+      - TERM=xterm-256color
       # This is required when nginx-proxy is enabled.
       - VIRTUAL_HOST=storybook.mobx.dev
     volumes:
-      - ./.storybook:/srv/mobx-storybook-starter/.storybook:rw
-      - ./src:/srv/mobx-storybook-starter/src:rw
-      - ./stories:/srv/mobx-storybook-starter/stories:rw
+      - ./.storybook:/srv/mobx-starter/.storybook:rw
+      - ./.yarn.lock:/srv/mobx-starter/.yarn.lock:rw
+      - ./node_modules:/srv/mobx-starter/node_modules:rw
+      - ./src:/srv/mobx-starter/src:rw
+      - ./stories:/srv/mobx-starter/stories:rw
 
   nginx-proxy:
     image: jwilder/nginx-proxy

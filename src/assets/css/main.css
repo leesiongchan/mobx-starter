@@ -1,0 +1,96 @@
+@import "normalize.css/normalize.css";
+
+@import "variables";
+/* @import "overrides"; */
+
+a {
+  color: $black;
+  text-decoration: none;
+  transition: color 0.15s;
+
+  &:hover {
+    color: rgba($black, 0.5);
+  }
+}
+
+body, html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: $black;
+  font-family: $base-font;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: $base-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $base-font;
+  font-weight: 600;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+input {
+  padding: 8.5px 15px;
+}
+
+input, textarea {
+  border: $border;
+  box-shadow: none;
+  box-sizing: border-box;
+  outline: 0;
+  position: relative;
+  resize: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+
+  &:hover {
+    border-color: rgba($black, 0.25);
+    box-shadow: 0 1px 0 rgba($black, 0.06);
+    z-index: 2;
+  }
+
+  &:focus {
+    border-color: rgba($black, 0.3);
+    box-shadow: 0 1px 0 rgba($black, 0.06);
+    z-index: 2;
+  }
+
+  &[type="radio"], &[type="checkbox"] {
+    width: auto;
+  }
+}
+
+label {
+  align-items: center;
+  display: flex;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+}
+
+picture {
+  align-items: center;
+  display: flex;
+}
+
+textarea {
+  padding: 15px;
+}

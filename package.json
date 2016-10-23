@@ -1,16 +1,15 @@
 {
+  "version": "0.0.0",
   "name": "mobx-starter",
-  "version": "1.0.0",
-  "description": "Nothing fancy just suite of packages that fit my personal taste.",
-  "main": "index.js",
+  "description": "Nothing fancy just a suite of packages that fit my personal taste.",
+  "author": "Lee Siong Chan <ahlee2326@me.com>",
+  "license": "MIT",
   "scripts": {
     "build": "webpack --config ./webpack.config.babel.js",
     "start": "node server.babel.js",
     "storybook": "start-storybook -p 9001",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Lee Siong Chan <ahlee2326@me.com>",
-  "license": "MIT",
   "dependencies": {
     "koa": "^1.0.0",
     "koa-helmet": "^1.0.0",
@@ -18,11 +17,11 @@
     "koa-static-cache": "^3.0.0",
     "koa-views": "^4.0.0",
     "lodash": "^4.16.2",
-    "mobx": "^2.5.2",
+    "mobx": "^2.6.0",
     "mobx-react": "^3.5.6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-router": "3.0.0-beta.1"
   },
   "devDependencies": {
     "@kadira/storybook": "^2.20.1",
@@ -44,17 +43,20 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "json-loader": "^0.5.4",
     "koa-webpack-dev-middleware": "^1.2.2",
     "koa-webpack-hot-middleware": "^1.0.3",
     "lost": "^7.1.0",
     "mobx-react-devtools": "^4.2.6",
+    "normalize.css": "^5.0.0",
     "nunjucks": "^2.5.2",
     "postcss-hexrgba": "^0.2.1",
+    "postcss-import": "8.1.0",
     "postcss-loader": "^0.13.0",
     "postcss-nested": "^1.0.0",
     "postcss-simple-vars": "^3.0.0",
     "react-hot-loader": "^3.0.0-beta.5",
     "style-loader": "^0.13.1",
-    "webpack": "^2.1.0-beta.25"
+    "webpack": "2.1.0-beta.21"
   }
 }

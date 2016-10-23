@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import DevTools from 'mobx-react-devtools';
 
-import AppStore from './stores/AppStore';
 import config from 'config';
-
-const appStore = new AppStore();
+import styles from './styles.css';
 
 class App extends Component {
   static propTypes = {
@@ -12,13 +10,13 @@ class App extends Component {
   };
 
   render() {
-    const { children } = this.props;
+    const { children, ...props } = this.props;
 
     return (
-      <div>
-        {React.cloneElement(children, {
-          appStore,
-        })}
+      <div className={styles.main}>
+        <main className={styles.content}>
+          {React.cloneElement(children, { ...props })}
+        </main>
 
         {config.NODE_ENV === 'development' &&
           <DevTools />
