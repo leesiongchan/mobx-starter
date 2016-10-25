@@ -6,7 +6,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         yarn
 
-WORKDIR /srv/tripviss-web-admin
+WORKDIR /srv/mobx-starter
 
 COPY package.json ./
 COPY yarn.lock ./
