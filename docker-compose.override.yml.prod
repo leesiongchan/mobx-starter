@@ -4,8 +4,6 @@ services:
   app:
     environment:
       # This is required when nginx-proxy is enabled.
-      - LETSENCRYPT_EMAIL=hello@app.mobx.dev
-      - LETSENCRYPT_HOST=app.mobx.dev
       - VIRTUAL_HOST=app.mobx.dev
 
   nginx-proxy:
