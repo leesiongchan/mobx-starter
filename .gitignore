@@ -1,7 +1,10 @@
 *-manifest.json
+*.log
 *.sublime-workspace
 .DS_Store
 .env
+.nyc_output
+coverage/
 docker-compose.override.yml
 node_modules/
 public/

@@ -90,21 +90,11 @@ if (isProd) {
         'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
       }),
       new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
+        minimize: isProd,
+        debug: !isProd,
       }),
       new webpack.optimize.DedupePlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          dead_code: true,
-          unused: true,
-          warnings: false,
-        },
-        output: {
-          comments: false,
-        },
-        sourceMap: true,
-      }),
+      new webpack.optimize.UglifyJsPlugin(),
     ],
   };
 } else {
