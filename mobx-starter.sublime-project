@@ -4,6 +4,7 @@
 		{
 			"folder_exclude_patterns":
 			[
+				".nyc_output",
 				"node_modules",
 				"public"
 			],

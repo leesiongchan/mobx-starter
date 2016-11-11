@@ -19,10 +19,7 @@ function renderer(view, locals) {
     const newLocals = {
       ...webpackAssets,
       ...locals,
-      env: process.env.NODE_ENV,
-      window: {
-        env: JSON.stringify(clientEnv),
-      },
+      env: clientEnv,
     };
 
     yield this.render(view, newLocals);
