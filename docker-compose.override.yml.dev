@@ -20,11 +20,11 @@ services:
       # This is required when nginx-proxy is enabled.
       - VIRTUAL_HOST=storybook.mobx.dev
     volumes:
-      - ./.storybook:/srv/mobx-starter/.storybook:rw
-      - ./.yarn.lock:/srv/mobx-starter/.yarn.lock:rw
-      - ./node_modules:/srv/mobx-starter/node_modules:rw
-      - ./src:/srv/mobx-starter/src:rw
-      - ./stories:/srv/mobx-starter/stories:rw
+      - ./.storybook:/srv/mobx-starter-storybook/.storybook:rw
+      - ./.yarn.lock:/srv/mobx-starter-storybook/.yarn.lock:rw
+      - ./node_modules:/srv/mobx-starter-storybook/node_modules:rw
+      - ./src:/srv/mobx-starter-storybook/src:rw
+      - ./stories:/srv/mobx-starter-storybook/stories:rw
       - yarn-cache:/root/.yarn-cache
 
   nginx-proxy:

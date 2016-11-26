@@ -6,7 +6,7 @@ RUN echo "deb http://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         yarn
 
-WORKDIR /srv/mobx-starter
+WORKDIR /srv/mobx-starter-storybook
 
 RUN echo 'set -o allexport\n. ~/.env\nset +o allexport' >> /root/.bashrc \
     && echo '' > /root/.env
