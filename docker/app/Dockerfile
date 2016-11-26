@@ -16,6 +16,7 @@ RUN echo 'set -o allexport\n. ~/.env\nset +o allexport' >> /root/.bashrc \
     && echo '' > /root/.env
 
 COPY .babelrc ./
+COPY client-env.js ./
 COPY server server/
 COPY server.babel.js ./
 COPY src src/

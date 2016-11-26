@@ -7,4 +7,4 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 browserEnv(['window', 'document', 'navigator']);
 
 // Ignore CSS imports
-require.extensions['.css'] = () => null;
+// require.extensions['.css'] = () => null;

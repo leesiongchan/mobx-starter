@@ -50,6 +50,10 @@ let webpackConfig = {
     new AssetsPlugin({
       update: true,
     }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: isProd,
+      debug: !isProd,
+    }),
     new webpack.ProgressPlugin(),
   ],
   postcss: [
@@ -88,10 +92,6 @@ if (isProd) {
       }),
       new webpack.DefinePlugin({
         'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV) },
-      }),
-      new webpack.LoaderOptionsPlugin({
-        minimize: isProd,
-        debug: !isProd,
       }),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin(),

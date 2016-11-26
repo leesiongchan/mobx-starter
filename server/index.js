@@ -1,5 +1,5 @@
 import helmet from 'koa-helmet';
-import Koa from 'koa';
+import koa from 'koa';
 import logger from 'koa-logger';
 import path from 'path';
 import staticCache from 'koa-static-cache';
@@ -7,7 +7,7 @@ import views from 'koa-views';
 
 import renderer from './middleware/renderer';
 
-const app = new Koa();
+const app = koa();
 
 const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 3000;
@@ -51,10 +51,4 @@ if (isProd) {
 
 app.use(renderer('html'));
 
-app.listen(port, host, err => {
-  if (err) {
-    console.log(err);
-  }
-
-  console.log(`Listening at ${host}:${port}`);
-});
+app.listen(port, host);

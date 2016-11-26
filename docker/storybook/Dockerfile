@@ -13,6 +13,7 @@ RUN echo 'set -o allexport\n. ~/.env\nset +o allexport' >> /root/.bashrc \
 
 COPY .babelrc ./
 COPY .storybook .storybook/
+COPY client-env.js ./
 COPY package.json ./
 COPY src src/
 COPY stories stories/

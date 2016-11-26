@@ -5,6 +5,9 @@ services:
     environment:
       # This is required when nginx-proxy is enabled.
       - VIRTUAL_HOST=app.mobx.dev
+      # Use this if you are using lets encrypt companion
+      # - LETSENCRYPT_EMAIL=dev@mobx.dev
+      # - LETSENCRYPT_HOST=app.mobx.dev
 
   nginx-proxy:
     image: jwilder/nginx-proxy

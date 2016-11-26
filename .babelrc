@@ -4,7 +4,8 @@
   "env": {
     "test": {
       "plugins": [
-        ["module-resolver", { "alias": { "app": "./src" } }]
+        "css-modules-transform",
+        ["webpack-alias", { "config": "${PWD}/webpack.config.test.js" }]
       ],
       "sourceMaps": "inline"
     }
